@@ -17,5 +17,6 @@ public class ApplicationTest {
         g.addPoint(0.1, -0.1);
         g.addPoint(-2.1, 38.1);
         System.out.println(g.getAreaByMaxLatAndMinLon(7.0, -7.0).density()); // 2
+        System.out.println(g.getDenserArea(2)); // [ {"minLat":-2.5, "maxLat":-2, "minLon":38, "maxLon":38.5}, {"minLat":6.5, "maxLat":7, "minLon":-7, "maxLon":-6.5}]
     }
 }

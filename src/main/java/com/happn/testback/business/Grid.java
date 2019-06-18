@@ -1,8 +1,14 @@
 package com.happn.testback.business;
 
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
 public class Grid {
 
-    private static final Double INCREMENT = 0.5;
+    static final Double INCREMENT = 0.5;
     private static final int X = 180;
     private static final int Y = 360;
 
@@ -14,9 +20,7 @@ public class Grid {
 
     public void addPoint(Double lat, Double lon){
         int x = X + scale(lat);
-        System.out.println(x);
         int y = Y - scale(lon);
-        System.out.println(y);
 
         Area a = map[x][y];
         if(a == null){
@@ -29,6 +33,15 @@ public class Grid {
 
     public Area getAreaByMaxLatAndMinLon(Double maxLat, Double minLon){
         return map[X + scale(maxLat)][Y - scale(minLon)];
+    }
+
+    public List<Area> getDenserArea(int n){
+        return Arrays.stream(map)
+                .flatMap(Arrays::stream)
+                .filter(Objects::nonNull)
+                .sorted(Comparator.comparing(Area::density).reversed())
+                .limit(n)
+                .collect(Collectors.toList());
     }
 
     private int scale(Double value){
