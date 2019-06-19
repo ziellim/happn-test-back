@@ -9,12 +9,12 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.util.List;
 
-public class ApplicationTest {
+public class HappnTestBack {
 
     private Grid g;
 
     @Test
-    public void run(){
+    public void testBack(){
         g = new Grid();
         System.out.println("create grid");
         try {
