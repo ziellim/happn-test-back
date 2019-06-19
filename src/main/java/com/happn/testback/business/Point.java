@@ -16,4 +16,12 @@ public class Point {
     public Double getLon() {
         return lon;
     }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "lat: " + lat +
+                ", lon: " + lon +
+                '}';
+    }
 }

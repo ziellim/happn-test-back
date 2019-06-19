@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import static com.happn.testback.Util.scale;
+
 public class Grid {
 
     static final Double INCREMENT = 0.5;
@@ -18,9 +20,13 @@ public class Grid {
         map = new Area[X * 2][Y * 2];
     }
 
+    public void addPoint(Point p){
+        addPoint(p.getLat(), p.getLon());
+    }
+
     public void addPoint(Double lat, Double lon){
-        int x = X + scale(lat);
-        int y = Y - scale(lon);
+        int x = (int)(X + scale(lat, INCREMENT) / INCREMENT);
+        int y = (int)(Y - scale(lon, INCREMENT) / INCREMENT);
 
         Area a = map[x][y];
         if(a == null){
@@ -31,8 +37,10 @@ public class Grid {
         map[x][y] = a;
     }
 
-    public Area getAreaByMaxLatAndMinLon(Double maxLat, Double minLon){
-        return map[X + scale(maxLat)][Y - scale(minLon)];
+    public Area getAreaByMinLatAndMinLon(Double maxLat, Double minLon){
+        int x = (int) (X + maxLat / INCREMENT);
+        int y = (int) (Y - minLon / INCREMENT);
+        return map[x][y];
     }
 
     public List<Area> getDenserArea(int n){
@@ -42,10 +50,5 @@ public class Grid {
                 .sorted(Comparator.comparing(Area::density).reversed())
                 .limit(n)
                 .collect(Collectors.toList());
-    }
-
-    private int scale(Double value){
-        Double rounded = (value <= 0 ? Math.floor(value) : Math.ceil(value)) / INCREMENT;
-        return rounded.intValue();
     }
 }
