@@ -1,8 +1,8 @@
-package com.happn.testback;
+package com.happn.testback.business;
 
 import org.junit.Test;
 
-import static com.happn.testback.Util.scale;
+import static com.happn.testback.business.Util.scale;
 
 public class UtilTest {
 

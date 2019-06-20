@@ -4,19 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import static com.happn.testback.Util.scale;
+import static com.happn.testback.business.Util.scale;
 import static com.happn.testback.business.Grid.INCREMENT;
 
-public class Area {
+public class GridArea {
 
     private Double minLat, minLon;
     private List<Point> points;
 
-    public Area() {
+    public GridArea() {
         points = new ArrayList<>();
     }
 
-    public Area(Double minLat, Double minLon) {
+    public GridArea(Double minLat, Double minLon) {
         this.minLat = minLat;
         this.minLon = minLon;
         points = new ArrayList<>();
@@ -32,11 +32,19 @@ public class Area {
         return points.size();
     }
 
-    private Double getMaxLat() {
+    public Double getMinLat() {
+        return minLat;
+    }
+
+    public Double getMinLon() {
+        return minLon;
+    }
+
+    public Double getMaxLat() {
         return minLat + INCREMENT;
     }
 
-    private Double getMaxLon() {
+    public Double getMaxLon() {
         return minLon + INCREMENT;
     }
 
@@ -44,9 +52,9 @@ public class Area {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Area area = (Area) o;
-        return minLat.equals(area.minLat) &&
-                minLon.equals(area.minLon);
+        GridArea gridArea = (GridArea) o;
+        return minLat.equals(gridArea.minLat) &&
+                minLon.equals(gridArea.minLon);
     }
 
     @Override

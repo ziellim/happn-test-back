@@ -1,4 +1,4 @@
-package com.happn.testback;
+package com.happn.testback.business;
 
 public class Util {
 

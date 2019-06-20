@@ -11,7 +11,7 @@ public class GridTest {
         Point p1 = new Point(-2.3, 38.3);
         Point p2 = new Point(-2.5, 38.3);
         Point p3 = new Point(-2.1, 38.1);
-        Area a = new Area(-2.5, 38.0);
+        GridArea a = new GridArea(-2.5, 38.0);
         // when
         g.addPoint(p1);
         g.addPoint(p2);

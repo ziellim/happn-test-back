@@ -1,23 +1,26 @@
 package com.happn.testback.business;
 
+import org.springframework.stereotype.Service;
+
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import static com.happn.testback.Util.scale;
+import static com.happn.testback.business.Util.scale;
 
+@Service
 public class Grid {
 
     static final Double INCREMENT = 0.5;
     private static final int X = 180;
     private static final int Y = 360;
 
-    private Area[][] map;
+    private GridArea[][] map;
 
     public Grid(){
-        map = new Area[X * 2][Y * 2];
+        map = new GridArea[X * 2][Y * 2];
     }
 
     public void addPoint(Point p){
@@ -28,26 +31,26 @@ public class Grid {
         int x = (int)(X + scale(lat, INCREMENT) / INCREMENT);
         int y = (int)(Y - scale(lon, INCREMENT) / INCREMENT);
 
-        Area a = map[x][y];
+        GridArea a = map[x][y];
         if(a == null){
-            a = new Area();
+            a = new GridArea();
         }
         a.addPoint(new Point(lat, lon));
 
         map[x][y] = a;
     }
 
-    public Area getAreaByMinLatAndMinLon(Double maxLat, Double minLon){
+    public GridArea getAreaByMinLatAndMinLon(Double maxLat, Double minLon){
         int x = (int) (X + maxLat / INCREMENT);
         int y = (int) (Y - minLon / INCREMENT);
         return map[x][y];
     }
 
-    public List<Area> getDenserArea(int n){
+    public List<GridArea> getDenserArea(int n){
         return Arrays.stream(map)
                 .flatMap(Arrays::stream)
                 .filter(Objects::nonNull)
-                .sorted(Comparator.comparing(Area::density).reversed())
+                .sorted(Comparator.comparing(GridArea::density).reversed())
                 .limit(n)
                 .collect(Collectors.toList());
     }

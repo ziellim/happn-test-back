@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Area object",
+  "type": "object",
+  "properties": {
+    "minLat": { "type": ["number", "null"] },
+    "maxLat": { "type": ["number", "null"] },
+    "minLon": { "type": ["number", "null"] },
+    "maxLon": { "type": ["number", "null"] },
+    "density": { "type": ["number"] }
+  },
+  "required": ["minLat", "maxLat", "minLon", "maxLon"]
+}

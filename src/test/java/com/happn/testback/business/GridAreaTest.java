@@ -2,12 +2,12 @@ package com.happn.testback.business;
 
 import org.junit.Test;
 
-public class AreaTest {
+public class GridAreaTest {
 
     @Test
     public void testAdd(){
         // given
-        Area a = new Area();
+        GridArea a = new GridArea();
         Point p = new Point(0.1, -0.1);
         // when
         a.addPoint(p);
