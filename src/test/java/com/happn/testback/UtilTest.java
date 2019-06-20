@@ -1,6 +1,6 @@
 package com.happn.testback;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import static com.happn.testback.Util.scale;
 

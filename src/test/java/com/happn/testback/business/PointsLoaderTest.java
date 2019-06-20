@@ -1,7 +1,7 @@
 package com.happn.testback.business;
 
 import com.google.common.io.Resources;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.io.IOException;
 import java.util.List;

@@ -4,7 +4,7 @@ import com.google.common.io.Resources;
 import com.happn.testback.business.PointsLoader;
 import com.happn.testback.business.Grid;
 import com.happn.testback.business.Point;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.io.IOException;
 import java.util.List;

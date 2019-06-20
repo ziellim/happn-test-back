@@ -1,7 +1,6 @@
 package com.happn.testback.business;
 
-import org.junit.jupiter.api.Test;
-
+import org.junit.Test;
 
 public class GridTest {
 
